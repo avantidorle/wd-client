@@ -8,7 +8,7 @@ import Famjam from "./famjam";
 function App() {
   return (
     <BrowserRouter>
-        <div className="container">
+        <div className="ms-4 me-4">
             <Routes>
                 <Route path="famjam" element={<Famjam/>}>
                    <Route path="group1" element={<PerGroupScreen/>}>

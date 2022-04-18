@@ -1,8 +1,10 @@
 import React from 'react'
+import ExpenseList from "../ExpenseList"
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
 
 const ExpensesScreen = () => {
     return(
+        <>
         <div className="border border-secondary bg-gradient">
             <div className="row mt-3">
                 <div className="col-10">
@@ -12,10 +14,7 @@ const ExpensesScreen = () => {
                    <i className="fa-solid fa-circle-plus fa-2x "/>
                 </div>
             </div>
-
             <div>
-
-
             </div>
                 <div>
                     <ul className="list-group mt-2">
@@ -71,6 +70,8 @@ const ExpensesScreen = () => {
                     </ul>
                 </div>
             </div>
+          <ExpenseList/>
+        </>
     );
 }
 
