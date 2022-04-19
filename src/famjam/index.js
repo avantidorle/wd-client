@@ -1,17 +1,14 @@
 import {Outlet} from "react-router-dom";
 import GroupsSidebar from "./GroupsSidebar";
 import "./css/index.css";
-
-import expenseReducer from "./reducers/expense-reducer";
-import todoReducer from "./reducers/todo-reducer";
-
-import {Provider} from "react-redux";
 import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+import expenseReducer from "./reducers/expense-reducer";
 
 const reducer = combineReducers({
-  expense: expenseReducer,
-  todo: todoReducer
+  expense: expenseReducer
 });
+
 
 const store = createStore(reducer);
 const Famjam = () => {

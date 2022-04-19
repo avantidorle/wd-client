@@ -8,3 +8,8 @@ export const findAllExpense = async () => {
     console.log("here4 ",expense);
     return expense;
 }
+
+export const createExpense = async (expense) => {
+    const response = await axios.post(EXPENSE_API, expense)
+    return response.data;
+}
