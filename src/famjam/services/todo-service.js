@@ -5,6 +5,5 @@ const TODO_API = `${API_BASE}`;
 export const findAllTodo = async () => {
     const response = await axios.get(TODO_API);
     const todo = response.data;
-    console.log("here4 ",todo);
     return todo;
 }

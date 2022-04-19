@@ -1,4 +1,5 @@
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
+import TodoList from "../TodoList";
 
 const TodoScreen = () => {
     return(
@@ -7,6 +8,8 @@ const TodoScreen = () => {
                 <div className="col-11"><h1>Todo</h1></div>
                 <div className="col-1 mt-2"><i class="fa-xl fa-solid fa-circle-plus"></i></div>
             </div>
+
+            <TodoList/>
 
             <ul className="list-group mt-2">
                 <li className="list-group-item">

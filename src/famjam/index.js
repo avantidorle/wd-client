@@ -4,11 +4,12 @@ import "./css/index.css";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import expenseReducer from "./reducers/expense-reducer";
+import todoReducer from "./reducers/todo-reducer";
 
 const reducer = combineReducers({
-  expense: expenseReducer
+  expense: expenseReducer,
+  todo: todoReducer
 });
-
 
 const store = createStore(reducer);
 const Famjam = () => {

@@ -50,7 +50,6 @@ const ExpensesScreen = () => {
                                     })} />
                             </div>
                         </div>
-
                         <div className="row mt-2">
                             <div className="col-2">
                                 <input type="date" className="form-control-plaintext text-secondary border border-secondary rounded"
