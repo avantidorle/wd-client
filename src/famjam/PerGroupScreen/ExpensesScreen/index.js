@@ -14,10 +14,10 @@ const ExpensesScreen = () => {
         <div className=" bg-gradient">
             <div className="row mt-3">
                 <div className="col-10">
-                    <h1 className="ms-2">Expenses</h1>
+                    <h1 className="ms-2 text-center">Expenses</h1>
                 </div>
                 <div className="col-2 mt-2">
-                    <button className="bg-transparent border-0" onClick={() => setDisp("Show")}><i className="fa-solid fa-circle-plus fa-2x fa-inverse float-right ms-5 ps-2 " /></button>
+                    <button className="bg-transparent border-0" onClick={() => setDisp("Show")}><i className="fa-solid fa-circle-plus fa-2x fa-inverse ms-5 ps-2 " /></button>
                 </div>
             </div>
             <div>
@@ -28,7 +28,7 @@ const ExpensesScreen = () => {
                             <div className="col-11">
                                 <input type="text" className="form-control-plaintext bg-transparent" value="Title" />
                             </div>
-                            <div className="col-1 mt-2"><button className="bg-transparent border-0"><i className="fa-solid fa-xmark fa-inverse" /></button></div>
+                            <div className="col-1 mt-2"><button className="bg-transparent border-0" onClick={() => setDisp("Hide")} ><i className="fa-solid fa-xmark fa-inverse" /></button></div>
                         </div>
                         <div>
                             <textarea className="form-control" rows="3" placeholder="Describe the expense"
@@ -63,7 +63,11 @@ const ExpensesScreen = () => {
                             <div className="dropdown col-5">
                                 <button className="btn btn-transparent dropdown-toggle border border-secondary" type="button"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                    aria-expanded="false"
+                                        onChange={(event) => setExpenseList({
+                                            ...expenseList,
+                                            payee: event.target.value
+                                        })}>
                                     Payee
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -79,14 +83,24 @@ const ExpensesScreen = () => {
                             <div className="col-1"></div>
                             <div className="col-4">
                                 <button type="submit" className="rounded-pill btn-success btn-lg float-end"
-                                    onClick={() => createExpense(dispatch, expenseList)}>
+                                    onClick={() => createExpense(dispatch, expenseList) && setDisp("Hide")} >
                                     Add Expense
                                 </button>
                             </div>
                         </div>
                     </div>}
             </div>
-        </div><ExpenseList />
+        </div>
+            <li className="list-group-item pt-3 bg-primary text-center">
+                <div className="row">
+                    <div className="col-3">Expense Detail</div>
+                    <div className="col-3">Payee</div>
+                    <div className="col-2">Date of Payment</div>
+                    <div className="col-2">Amount</div>
+                    <div className="col-2"></div>
+                </div>
+            </li>
+            <ExpenseList />
         </>
     );
 }
