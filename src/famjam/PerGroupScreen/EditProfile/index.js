@@ -29,7 +29,7 @@ const EditProfile = () => {
         <img src="/images/tom.jpg" className="wd-dpimg rounded-circle img-fluid"/>
         </div>
         <div className="wd-edit-details">
-                        <ul className="list-group">
+                        <ul className="list-group" id="edit-details">
                             <li className="list-group-item">
                                 <label> Name</label>
                                 <input type = "text"
