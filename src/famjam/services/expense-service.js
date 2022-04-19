@@ -5,6 +5,5 @@ const EXPENSE_API = `${API_BASE}`;
 export const findAllExpense = async () => {
     const response = await axios.get(EXPENSE_API);
     const expense = response.data;
-    console.log("here4 ",expense);
     return expense;
 }

@@ -5,7 +5,6 @@ const todoReducer = (state = [], action) => {
   switch (action.type) {
 
      case FIND_ALL_TODO:
-        console.log("here2 ",action);
         return action.todo;
      default:
         return state;

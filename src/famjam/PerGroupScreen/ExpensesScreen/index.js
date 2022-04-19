@@ -8,10 +8,10 @@ const ExpensesScreen = () => {
         <div className="border border-secondary bg-gradient">
             <div className="row mt-3">
                 <div className="col-10">
-                    <h1 className="ms-4">Expenses</h1>
+                    <h1 className="ms-2">Expenses</h1>
                 </div>
                 <div className="col-2 mt-2">
-                   <i className="fa-solid fa-circle-plus fa-2x "/>
+                    <button className="bg-transparent border-0"><i className="fa-solid fa-circle-plus fa-2x fa-inverse float-right ms-5 ps-2 "/></button>
                 </div>
             </div>
             <div>
@@ -24,10 +24,10 @@ const ExpensesScreen = () => {
                                     <div className="col-11">
                                     <input type="text" className="form-control-plaintext bg-transparent" value="Title"/>
                                     </div>
-                                    <div className="col-1 mt-2"><button className="bg-transparent border-0"><i className="fa-solid fa-xmark" /></button></div>
+                                    <div className="col-1 mt-2"><button className="bg-transparent border-0"><i className="fa-solid fa-xmark fa-inverse" /></button></div>
                                 </div>
                                 <div>
-                                    <textarea className="form-control" rows="3"></textarea>
+                                    <textarea className="form-control" rows="3" placeholder="Describe the expense"></textarea>
                                 </div>
                                 <div className="mt-2">
                                     <div className="input-group mb-3">
@@ -40,8 +40,8 @@ const ExpensesScreen = () => {
                                 </div>
 
                                 <div className="row mt-2">
-                                    <div className="col-2 ">
-                                        <input type="date" className="form-control-plaintext "/>
+                                    <div className="col-2">
+                                        <input type="date" className="form-control-plaintext border border-secondary rounded"/>
                                     </div>
 
                                     <div className="dropdown col-5">
