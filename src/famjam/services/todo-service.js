@@ -7,3 +7,13 @@ export const findAllTodo = async () => {
     const todo = response.data;
     return todo;
 }
+
+export const createTodo = async (todo) => {
+    const response = await axios.post(TODO_API, todo)
+    return response.data;
+}
+
+export const deleteTodo = async (todo) => {
+    const response = await axios.delete(`${TODO_API}/${todo._id}`);
+    return response.data;
+}

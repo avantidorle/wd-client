@@ -11,6 +11,8 @@ const TodoList = () => {
     useEffect(() => {findAllTodo(dispatch)});
   return (
   <>
+  <div>
+
     <ul className="list-group">
       {
         todos.map && todos.map(todo =>
@@ -18,6 +20,7 @@ const TodoList = () => {
                         todo={todo}/>)
       }
     </ul>
+   </div>
    </>
   );
 }
