@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
 import ExpenseList from "../ExpenseList"
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
-import {createExpense} from "../../actions/expense-action";
+import {createExpense, getExpense} from "../../actions/expense-action";
+
 
 const ExpensesScreen = () => {
     const [disp, setDisp ] = useState("Hide");
     const [expenseList, setExpenseList] = useState({expense:'New Expense'});
     const dispatch = useDispatch();
-    
+
     return(
         <>
         <div className=" bg-gradient">
@@ -79,7 +80,7 @@ const ExpensesScreen = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-1"></div>
+                            <div className="col-1"/>
                             <div className="col-4">
                                 <button type="submit" className="rounded-pill btn-success btn-lg float-end"
                                     onClick={() => createExpense(dispatch, expenseList) && setDisp("Hide")} >
@@ -96,10 +97,19 @@ const ExpensesScreen = () => {
                     <div className="col-3">Payee</div>
                     <div className="col-2">Date of Payment</div>
                     <div className="col-2">Amount</div>
-                    <div className="col-2"></div>
+                    <div className="col-2"/>
                 </div>
             </li>
             <ExpenseList />
+            <li className="list-group-item pt-3  text-center border-0">
+                <div className="row">
+                    <div className="col-6"/>
+                    <div className="col-2 bg-danger rounded">Total Expense</div>
+                    {/*TODO: its not working*/}
+                    <div className="col-2 bg-danger rounded">{ () => getExpense()}</div>
+                    <div className="col-2"/>
+                </div>
+            </li>
         </>
     );
 }
