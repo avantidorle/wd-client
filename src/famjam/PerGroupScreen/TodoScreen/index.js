@@ -1,49 +1,42 @@
-import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
-import TodoList from "../TodoList";
+import React from "react";
+import {useEffect} from "react";
+import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {findAllSections} from "../../actions/todo-action";
+import SectionListItem from "./SectionListItem.js"
 
 const TodoScreen = () => {
-    return(
+    const sections = useSelector(state => state.section);
+    const dispatch = useDispatch();
+    useEffect(() => {findAllSections(dispatch)});
+  return (
+  <>
+  <div>
+    <ul className="list-group">
+      {
+        sections.map && sections.map(section =>
         <>
-            <div className="row">
-                <div className="col-11"><h1>Todo</h1></div>
-                <div className="col-1 mt-2"><i class="fa-xl fa-solid fa-circle-plus"></i></div>
+        <div class="accordion" id={"ACC_"+section._id}>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id={"HEAD_"+section._id}>
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#SEC_"+section._id}
+              aria-expanded="false" aria-controls={section._id}>
+                {section.title}
+              </button>
+            </h2>
+            <div id={"SEC_"+section._id} class="accordion-collapse collapse" aria-labelledby={"HEAD_"+section._id} data-bs-parent={"#ACC_"+section._id}>
+              <div class="accordion-body">
+                 <SectionListItem key={section._id} todos={section.todos} sid={section._id}/>
+              </div>
             </div>
-
-            <TodoList/>
-
-            <ul className="list-group mt-2">
-                <li className="list-group-item">
-                    <div>
-                        <div className="row">
-                            <div className="col-11">
-                                <input type="text" className="form-control-plaintext" placeholder="Title"/>
-                            </div>
-                            <div className="col-1"><i class="fa-solid fa-xmark"></i></div>
-                        </div>
-                        <div><textarea className="form-control" rows="3" placeholder="Description"></textarea></div>
-                        <div className="row pt-2">
-                            <div className="col-2"><input type="date" className="form-control-plaintext"/></div>
-                            <div className="col-8">
-                            <div className="dropdown">
-                              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Assign to
-                              </button>
-                              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" href="#">User1</a>
-                                <a className="dropdown-item" href="#">User2</a>
-                              </div>
-                            </div>
-                            </div>
-                            <div className="col-2">
-                                <button type="button" class="btn btn-success btn-lg rounded-pill">Add Task</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </>
-    );
+          </div>
+          </div>
+        </>)
+      }
+    </ul>
+   </div>
+   </>
+  );
 }
 
 export default TodoScreen;

@@ -8,7 +8,7 @@ import todoReducer from "./reducers/todo-reducer";
 
 const reducer = combineReducers({
   expense: expenseReducer,
-  todo: todoReducer
+  section: todoReducer
 });
 
 const store = createStore(reducer);
