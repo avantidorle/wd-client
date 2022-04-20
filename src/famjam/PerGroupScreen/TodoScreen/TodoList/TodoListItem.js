@@ -1,7 +1,8 @@
 import {useDispatch} from "react-redux";
-import {deleteTodo} from "../../actions/todo-action";
+import {deleteTodo} from "../../../actions/todo-action";
 
-const TodoListItem = ({todo}) => {
+const TodoListItem = ({todo, sid}) => {
+
     const dispatch = useDispatch();
     const getDate=(date)=>{
         return new Date(date).toDateString()
@@ -10,7 +11,7 @@ const TodoListItem = ({todo}) => {
         <li className="list-group-item pt-3">
             <div className="row">
                 <div className="col-1">
-                    <input class="form-check-input" type="checkbox" value="" onClick={() => deleteTodo(dispatch, todo)}/>
+                    <input class="form-check-input" type="checkbox" value="" onClick={() => deleteTodo(dispatch, todo, sid)}/>
                 </div>
                 <div className="col-3">{todo.title}</div>
                 <div className="col-3">{todo.createdBy}</div>
