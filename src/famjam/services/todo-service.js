@@ -15,6 +15,22 @@ export const createTodo = async (todo, sid) => {
 }
 
 export const deleteTodo = async (todo, sid) => {
-    const response = await axios.put(`${TODO_API}/${sid}/${todo.title}`);
+    const response = await axios.put(`${TODO_API}/${sid}/${todo._id}`);
+    return response.data;
+}
+
+export const updateTodo = async (todo, sid) => {
+    const response = await axios.put(`${TODO_API}/update/${sid}/${todo._id}`, todo);
+    return response.data;
+}
+
+export const createSection = async (sections) => {
+    const response = await axios.post(TODO_API, sections);
+    return response.data;
+}
+
+
+export const deleteSection = async (section) => {
+    const response = await axios.delete(`${TODO_API}/${section._id}`);
     return response.data;
 }

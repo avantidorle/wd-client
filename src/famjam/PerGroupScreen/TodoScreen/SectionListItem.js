@@ -4,13 +4,13 @@ import {createTodo} from "../../actions/todo-action";
 import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
 
-const SectionListItem = ({todos, sid}) => {
+const SectionListItem = ({todos, section}) => {
     const [disp, setDisp ] = useState("Hide");
     const [todoItem, setTodoItem] = useState({title:''});
     const dispatch = useDispatch();
     return(
         <>
-            <TodoList todos={todos} sid={sid}/>
+            <TodoList todos={todos} section={section}/>
             {disp === "Show" && <></>}
             {disp === "Hide" &&
                 <div className="mt-2">
@@ -61,7 +61,7 @@ const SectionListItem = ({todos, sid}) => {
                             </div>
                             </div>
                             <div className="col-2">
-                                <button type="button" className="btn btn-success rounded-pill float-end me-2" id={sid}
+                                <button type="button" className="btn btn-success rounded-pill float-end me-2" id={section._id}
                                 onClick={(e) => createTodo(dispatch, todoItem, e.target.id) && setDisp("Hide")}>
                                 Add Task</button>
                             </div>
