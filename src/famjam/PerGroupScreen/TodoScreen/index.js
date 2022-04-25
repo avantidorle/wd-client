@@ -2,21 +2,22 @@ import React, {useState} from 'react'
 import {useEffect} from "react";
 import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
+import {useOutletContext} from "react-router-dom";
 import {findAllSections} from "../../actions/todo-action";
 import {createSection} from "../../actions/todo-action";
 import {deleteSection} from "../../actions/todo-action";
 import SectionListItem from "./SectionListItem.js"
 
-const TodoScreen = () => {
+const TodoScreen = ({gid}) => {
+
     const [disp, setDisp ] = useState("Hide");
     const [newSection, setSection] = useState({title:''});
     const sections = useSelector(state => state.section);
     const dispatch = useDispatch();
-    useEffect(() => {findAllSections(dispatch)});
+    useEffect(() => {findAllSections(dispatch)},[]);
   return (
   <>
   <div>
-
     <div className="row">
         <div className="col-11"><h1>Todo</h1></div>
         <div className="col-1 mt-2">

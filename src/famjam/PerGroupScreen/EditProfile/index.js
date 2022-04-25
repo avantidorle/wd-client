@@ -8,7 +8,7 @@ const EditProfile = () => {
         <div>
              <div className="wd-edit-title">
                        <div className="wd-cancel-button">
-                            <Link to="/famjam/group1/profile">
+                            <Link to="/famjam/profile">
                             <i className="fas fa-times"/>
                             </Link>
                         </div>
@@ -17,7 +17,7 @@ const EditProfile = () => {
                         <div className="wd-save-button">
                           <Link
                           className="btn btn-primary rounded-pill" id="save"
-                          to="/famjam/group1/profile">
+                          to="/famjam/profile">
                            Save
                            </Link>
                         </div>
