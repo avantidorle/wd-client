@@ -5,24 +5,24 @@ export const FIND_ALL_EXPENSE = 'FIND_ALL_EXPENSE';
 export const UPDATE_EXPENSE ='UPDATE_EXPENSE';
 // export const GET_EXPENSE = 'GET_EXPENSE';
 
-export const findAllExpense = async (dispatch) => {
- const expense = await service.findAllExpense();
+export const findAllExpense = async (dispatch, gid) => {
+ const expense = await service.findAllExpense(gid);
  dispatch({
    type: FIND_ALL_EXPENSE,
    expense
  });
 }
 
-export const createExpense = async (dispatch, expense) => {
-    const newExpense = await service.createExpense(expense);
+export const createExpense = async (dispatch, expense, gid) => {
+    const newExpense = await service.createExpense(expense, gid);
     dispatch({
         type: CREATE_EXPENSE,
         newExpense
     });
 }
 
-export const deleteExpense = async (dispatch, expense) => {
-    const response = await service.deleteExpense(expense);
+export const deleteExpense = async (dispatch, expense, gid) => {
+    const response = await service.deleteExpense(expense, gid);
     dispatch({
         type: DELETE_EXPENSE,
         response
@@ -40,6 +40,6 @@ export const updateExpense = async (dispatch, expense) => {
     const status = await service.updateExpense(expense);
     dispatch({
         type: UPDATE_EXPENSE,
-        status
+        expense
     });
 }

@@ -22,7 +22,7 @@ function App() {
         <div className="ms-4 me-4">
             <Routes>
                 <Route path="/famjam" element={<Famjam groups={groups}/>}>
-                <Route path="/famjam/profile" element={<ProfileScreen/>}/>
+                <Route path="/famjam" element={<ProfileScreen/>}/>
                 <Route path="/famjam/editprofile" element={<EditProfile/>}/>
                     {
                         groups.map && groups.map(group =>

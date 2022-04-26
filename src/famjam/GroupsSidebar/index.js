@@ -7,7 +7,7 @@ const GroupsSidebar = ({groups}) => {
     return(
         <>
             <div className="mt-3 list-group">
-            <Link to="/famjam/profile" className={`list-group-item btn ${loc.pathname === '/famjam/profile' ? 'active' : ''}`}>
+            <Link to="/famjam" className={`list-group-item btn ${loc.pathname === '/famjam' || loc.pathname === '/famjam/editprofile'? 'active' : ''}`}>
                 <div className="wd-float-left" width="20%"><i className="fas fa-user"></i></div>
             </Link>
             {
