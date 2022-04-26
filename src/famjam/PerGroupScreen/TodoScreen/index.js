@@ -14,7 +14,7 @@ const TodoScreen = ({gid}) => {
     const [newSection, setSection] = useState({title:''});
     const sections = useSelector(state => state.section);
     const dispatch = useDispatch();
-    useEffect(() => {findAllSections(dispatch)},[]);
+    useEffect(() => {findAllSections(dispatch, gid)});
   return (
   <>
   <div>
@@ -40,7 +40,7 @@ const TodoScreen = ({gid}) => {
         </div>
         <div className="col-2 pe-0">
             <button type="button" className="btn btn-success rounded-pill float-start"
-            onClick={() => createSection(dispatch, newSection) && setDisp("Hide")}>
+            onClick={() => createSection(dispatch, newSection, gid) && setDisp("Hide")}>
             Add Section</button>
             <i class="fa fa-window-close fa-xl me-2 mt-3 ms-4 float-start " onClick={() => setDisp("Hide")}></i>
         </div>
@@ -63,14 +63,14 @@ const TodoScreen = ({gid}) => {
             </h2>
             <div id={"SEC_"+section._id} class="accordion-collapse collapse" aria-labelledby={"HEAD_"+section._id} data-bs-parent={"#ACC_"+section._id}>
               <div class="accordion-body">
-                 <SectionListItem key={section._id} todos={section.todos} section={section}/>
+                 <SectionListItem key={section._id} todos={section.todos} section={section} gid={gid}/>
               </div>
             </div>
           </div>
         </div>
         </div>
         <div className="col-1">
-            <i className="fas fa-trash-can ms-2 mt-4 fa-inverse" onClick={() => deleteSection(dispatch, section)}/>
+            <i className="fas fa-trash-can ms-2 mt-4 fa-inverse" onClick={() => deleteSection(dispatch, section, gid)}/>
         </div>
         </div>
         </>)
