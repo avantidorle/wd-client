@@ -7,6 +7,10 @@ const NavigationSidebar = ({gid}) => {
     const loc = useLocation();
     return(
             <div className="pt-2 list-group">
+                <Link to={"/famjam/"+gid+"/settings"} className={`list-group-item ${loc.pathname === '/famjam/'+gid+"/settings" ? 'active' : ''}`}>
+                    <div className="wd-float-left" width="20%"><i className="fa-solid fa-cog"></i></div>
+                    <div className="ps-2 wd-float-left d-lg-none d-md-none d-sm-none d-xl-block">Settings</div>
+                </Link>
                 <Link to={"/famjam/"+gid} className={`list-group-item ${loc.pathname === '/famjam/'+gid ? 'active' : ''}`}>
                     <div className="wd-float-left" width="20%"><i className="fa-solid fa-house"></i></div>
                     <div className="ps-2 wd-float-left d-lg-none d-md-none d-sm-none d-xl-block">Home</div>

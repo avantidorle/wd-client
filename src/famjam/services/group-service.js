@@ -7,3 +7,13 @@ export const findAllGroups = async () => {
     const groups = response.data;
     return groups;
 }
+
+export const createGroup = async (groupName) => {
+    const response = await axios.post(GROUP_API, groupName);
+    return response.data;
+}
+
+export const deleteGroup = async (gid) => {
+    const response = await axios.delete(`${GROUP_API}/${gid}`);
+    return response.data;
+}

@@ -10,12 +10,13 @@ import ExpensesScreen from "./famjam/PerGroupScreen/ExpensesScreen";
 import PerGroupScreen from "./famjam/PerGroupScreen";
 import ProfileScreen from "./famjam/PerGroupScreen/ProfileScreen";
 import EditProfile from "./famjam/PerGroupScreen/EditProfile";
+import GroupSettings from "./famjam/PerGroupScreen/GroupSettings";
 import Famjam from "./famjam";
 
 function App() {
   const groups = useSelector(state => state.group);
   const dispatch = useDispatch();
-  useEffect(() => {findAllGroups(dispatch)},[]);
+  useEffect(() => {findAllGroups(dispatch)});
   return (
 
     <BrowserRouter>
@@ -28,6 +29,7 @@ function App() {
                         groups.map && groups.map(group =>
                         <>
                             <Route path={"/famjam/GR"+group._id} element={<PerGroupScreen gid={"GR"+group._id}/>}>
+                                <Route path={"/famjam/GR"+group._id+"/settings"} element={<GroupSettings group={group}/>}/>
                                 <Route path={"/famjam/GR"+group._id} element={<HomeScreen gid={group._id}/>}/>
                                 <Route path={"/famjam/GR"+group._id+"/todo"} element={<TodoScreen gid={group._id}/>}/>
                                 <Route path={"/famjam/GR"+group._id+"/expense"} element={<ExpensesScreen gid={group._id}/>}/>
