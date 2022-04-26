@@ -6,13 +6,19 @@ import PerGroupScreen from "./famjam/PerGroupScreen";
 import ProfileScreen from "./famjam/PerGroupScreen/ProfileScreen";
 import EditProfile from "./famjam/PerGroupScreen/EditProfile";
 import Famjam from "./famjam";
+import GoogleAuthentication from "./famjam/GoogleAuthentication";
+import RegistarScreen from './famjam/RegistarScreen'
 
 function App() {
   return (
     <BrowserRouter>
         <div className="ms-4 me-4">
             <Routes>
+                <Route path="/" element={ <GoogleAuthentication/>}/>
+                <Route path="/login" element={ <GoogleAuthentication/>}/>
+
                 <Route path="famjam" element={<Famjam/>}>
+                   <Route path="/famjam/registar" element={ <RegistarScreen/>}/>
                    <Route path="group1" element={<PerGroupScreen/>}>
                         <Route path="profile" element={<ProfileScreen/>}/>
                         <Route index element={<HomeScreen/>}/>
@@ -31,6 +37,7 @@ function App() {
             </Routes>
         </div>
     </BrowserRouter>
+
     );
 }
 

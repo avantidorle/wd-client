@@ -5,10 +5,14 @@ import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import expenseReducer from "./reducers/expense-reducer";
 import todoReducer from "./reducers/todo-reducer";
+import userReducer from "./reducers/users-reducer";
+import googleReducer from "./reducers/google-reducer";
 
 const reducer = combineReducers({
   expense: expenseReducer,
-  todo: todoReducer
+  todo: todoReducer,
+  users: userReducer,
+  gusers: googleReducer
 });
 
 const store = createStore(reducer);
@@ -17,6 +21,7 @@ const Famjam = () => {
    <Provider store={store}>
     <div className="row mt-2">
       <div className="col-1">
+
         <GroupsSidebar/>
       </div>
       <div className="col-11">
