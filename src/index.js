@@ -8,11 +8,13 @@ import {Provider} from "react-redux";
 import expenseReducer from "./famjam/reducers/expense-reducer";
 import todoReducer from "./famjam/reducers/todo-reducer";
 import groupReducer from "./famjam/reducers/group-reducer.js";
+import googleReducer from "./famjam/reducers/google-reducer.js";
 
 const reducer = combineReducers({
   expense: expenseReducer,
   section: todoReducer,
-  group: groupReducer
+  group: groupReducer,
+    gusers: googleReducer
 });
 
 const store = createStore(reducer);
