@@ -6,3 +6,8 @@
 .wd-float-left {
     float: left
 }
+
+.accordion-button:not(.collapsed) {
+    color: #e6ebec;
+    background-color: #a37b00;
+}

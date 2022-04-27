@@ -5,7 +5,7 @@ import Popup from 'reactjs-popup';
 import {deleteExpense, updateExpense} from "../../actions/expense-action";
 import React, {useState} from "react";
 
-const ExpenseListItem = ({expense}) => {
+const ExpenseListItem = ({expense, gid}) => {
     const dispatch = useDispatch();
     const id = expense._id;
     const [title, setTitle] = useState(expense.title);
@@ -98,20 +98,19 @@ const ExpenseListItem = ({expense}) => {
                                                 <Form.Control
                                                     type="Date"
                                                     name="date"
-                                                    value={date.toLocaleString()}
                                                     onChange={(e)=> setDate(e.target.value)}
                                                 />
                                             </Form.Group>
                                         </div>
 
                                         <div className="d-grid">
-                                            <button className="  btn btn-success mt-2 mb-2" variant="success" type="submit" block
+                                            <button className="  btn btn-success mt-2 mb-2" variant="success" type="button" block
                                                     onClick={() => updateExpense(dispatch, {...expense,
                                                         title: title,
                                                         amount: amount,
                                                         payee: payee,
                                                         paymentDate: date
-                                                    })} >
+                                                    }, gid)} >
                                                 Edit Expense
                                             </button>
                                         </div>
@@ -119,7 +118,7 @@ const ExpenseListItem = ({expense}) => {
                                 </div>
                             </div>
                         </Popup>
-                        <button className="bg-transparent border-0" onClick={() => deleteExpense(dispatch, expense)}>
+                        <button className="bg-transparent border-0" onClick={() => deleteExpense(dispatch, expense, gid)}>
                             <i className="fas fa-trash-can ms-2 fa-inverse"/>
                         </button>
                     </div>

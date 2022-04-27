@@ -1,49 +1,84 @@
-import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
-import TodoList from "../TodoList";
+import React, {useState} from 'react'
+import {useEffect} from "react";
+import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {useOutletContext} from "react-router-dom";
+import {findAllSections} from "../../actions/todo-action";
+import {createSection} from "../../actions/todo-action";
+import {deleteSection} from "../../actions/todo-action";
+import SectionListItem from "./SectionListItem.js"
 
-const TodoScreen = () => {
-    return(
+const TodoScreen = ({gid}) => {
+
+    const [disp, setDisp ] = useState("Hide");
+    const [newSection, setSection] = useState({title:''});
+    const sections = useSelector(state => state.section);
+    const dispatch = useDispatch();
+    useEffect(() => {findAllSections(dispatch, gid)});
+  return (
+  <>
+  <div>
+    <div className="row">
+        <div className="col-11"><h1>Todo</h1></div>
+        <div className="col-1 mt-2">
+            {disp === "Show" && <></>}
+            {disp === "Hide" &&
+                <i class="fa-xl fa-solid fa-circle-plus float-end mt-4 me-4" title="Add section" onClick={() => setDisp("Show")}></i>
+            }
+        </div>
+    </div>
+    {disp === "Hide" && <></>}
+    {disp === "Show" &&
+
+    <div className="row">
+        <div className="col-10">
+            <input type="text" className="form-control-plaintext ps-2 border border-dark rounded" placeholder="Section Name"
+                onChange={(event) => setSection({
+                ...newSection,
+                title: event.target.value
+                })} />
+        </div>
+        <div className="col-2 pe-0">
+            <button type="button" className="btn btn-success rounded-pill float-start"
+            onClick={() => createSection(dispatch, newSection, gid) && setDisp("Hide")}>
+            Add Section</button>
+            <i class="fa fa-window-close fa-xl me-2 mt-3 ms-4 float-start " onClick={() => setDisp("Hide")}></i>
+        </div>
+    </div>
+    }
+    <ul className="list-group mt-2">
+      {
+        sections.map && sections.map(section =>
         <>
-            <div className="row">
-                <div className="col-11"><h1>Todo</h1></div>
-                <div className="col-1 mt-2"><i class="fa-xl fa-solid fa-circle-plus"></i></div>
+
+        <div className="row">
+        <div className="col-11">
+        <div class="accordion" id={"ACC_"+section._id}>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id={"HEAD_"+section._id}>
+              <button class="accordion-button collapsed  bg-gradient" type="button" data-bs-toggle="collapse" data-bs-target={"#SEC_"+section._id}
+              aria-expanded="false" aria-controls={section._id}>
+                <strong>{section.title}</strong>
+              </button>
+            </h2>
+            <div id={"SEC_"+section._id} class="accordion-collapse collapse" aria-labelledby={"HEAD_"+section._id} data-bs-parent={"#ACC_"+section._id}>
+              <div class="accordion-body">
+                 <SectionListItem key={section._id} todos={section.todos} section={section} gid={gid}/>
+              </div>
             </div>
-
-            <TodoList/>
-
-            <ul className="list-group mt-2">
-                <li className="list-group-item">
-                    <div>
-                        <div className="row">
-                            <div className="col-11">
-                                <input type="text" className="form-control-plaintext" placeholder="Title"/>
-                            </div>
-                            <div className="col-1"><i class="fa-solid fa-xmark"></i></div>
-                        </div>
-                        <div><textarea className="form-control" rows="3" placeholder="Description"></textarea></div>
-                        <div className="row pt-2">
-                            <div className="col-2"><input type="date" className="form-control-plaintext"/></div>
-                            <div className="col-8">
-                            <div className="dropdown">
-                              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Assign to
-                              </button>
-                              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" href="#">User1</a>
-                                <a className="dropdown-item" href="#">User2</a>
-                              </div>
-                            </div>
-                            </div>
-                            <div className="col-2">
-                                <button type="button" class="btn btn-success btn-lg rounded-pill">Add Task</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </>
-    );
+          </div>
+        </div>
+        </div>
+        <div className="col-1">
+            <i className="fas fa-trash-can ms-2 mt-4 fa-inverse" onClick={() => deleteSection(dispatch, section, gid)}/>
+        </div>
+        </div>
+        </>)
+      }
+    </ul>
+   </div>
+   </>
+  );
 }
 
 export default TodoScreen;
