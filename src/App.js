@@ -12,6 +12,8 @@ import ProfileScreen from "./famjam/PerGroupScreen/ProfileScreen";
 import EditProfile from "./famjam/PerGroupScreen/EditProfile";
 import GroupSettings from "./famjam/PerGroupScreen/GroupSettings";
 import Famjam from "./famjam";
+import GoogleAuthentication from "./famjam/GoogleAuthentication";
+import RegistarScreen from './famjam/RegistarScreen'
 
 function App() {
   const groups = useSelector(state => state.group);
@@ -22,8 +24,12 @@ function App() {
     <BrowserRouter>
         <div className="ms-4 me-4">
             <Routes>
+
+                 <Route path="/" element={ <GoogleAuthentication/>}/>
+                <Route path="/login" element={ <GoogleAuthentication/>}/>
                 <Route path="/famjam" element={<Famjam groups={groups}/>}>
                 <Route path="/famjam" element={<ProfileScreen/>}/>
+                <Route path="/famjam/registar" element={ <RegistarScreen/>}/>
                 <Route path="/famjam/editprofile" element={<EditProfile/>}/>
                     {
                         groups.map && groups.map(group =>
@@ -40,6 +46,7 @@ function App() {
             </Routes>
         </div>
     </BrowserRouter>
+
     );
 }
 
