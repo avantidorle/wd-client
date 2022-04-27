@@ -1,32 +1,19 @@
+import {useState} from "react";
 import {Outlet} from "react-router-dom";
 import GroupsSidebar from "./GroupsSidebar";
+import PerGroupScreen from "./PerGroupScreen";
 import "./css/index.css";
-import {combineReducers, createStore} from "redux";
-import {Provider} from "react-redux";
-import expenseReducer from "./reducers/expense-reducer";
-import postsReducer from "./reducers/posts-reducer";
-import usersReducer from "./reducers/users-reducer";
 
-const reducer = combineReducers({
-  expense: expenseReducer,
-  posts: postsReducer,
-  users: usersReducer
-});
-
-
-const store = createStore(reducer);
-const Famjam = () => {
+const Famjam = ({groups}) => {
   return (
-   <Provider store={store}>
     <div className="row mt-2">
       <div className="col-1">
-        <GroupsSidebar/>
+         <GroupsSidebar groups={groups}/>
       </div>
       <div className="col-11">
-        <Outlet/>
+         <Outlet/>
       </div>
     </div>
-  </Provider>
   );
 };
 export default Famjam;

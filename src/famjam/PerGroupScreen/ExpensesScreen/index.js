@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
 import ExpenseList from "../ExpenseList"
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
-import {createExpense} from "../../actions/expense-action";
+import {createExpense, getExpense} from "../../actions/expense-action";
 
-const ExpensesScreen = () => {
+
+const ExpensesScreen = ({gid}) => {
     const [disp, setDisp ] = useState("Hide");
     const [expenseList, setExpenseList] = useState({expense:'New Expense'});
     const dispatch = useDispatch();
-    
+
     return(
         <>
         <div className=" bg-gradient">
@@ -26,7 +27,7 @@ const ExpensesScreen = () => {
                     <div className="p-3">
                         <div className="row">
                             <div className="col-11">
-                                <input type="text" className="form-control-plaintext bg-transparent" value="Title" />
+                                <input type="text" className="form-control-plaintext bg-transparent" placeholder="Title" />
                             </div>
                             <div className="col-1 mt-2"><button className="bg-transparent border-0" onClick={() => setDisp("Hide")} ><i className="fa-solid fa-xmark fa-inverse" /></button></div>
                         </div>
@@ -50,7 +51,6 @@ const ExpensesScreen = () => {
                                     })} />
                             </div>
                         </div>
-
                         <div className="row mt-2">
                             <div className="col-2">
                                 <input type="date" className="form-control-plaintext text-secondary border border-secondary rounded"
@@ -80,10 +80,10 @@ const ExpensesScreen = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-1"></div>
+                            <div className="col-1"/>
                             <div className="col-4">
                                 <button type="submit" className="rounded-pill btn-success btn-lg float-end"
-                                    onClick={() => createExpense(dispatch, expenseList) && setDisp("Hide")} >
+                                    onClick={() => createExpense(dispatch, expenseList, gid) && setDisp("Hide")} >
                                     Add Expense
                                 </button>
                             </div>
@@ -97,10 +97,19 @@ const ExpensesScreen = () => {
                     <div className="col-3">Payee</div>
                     <div className="col-2">Date of Payment</div>
                     <div className="col-2">Amount</div>
-                    <div className="col-2"></div>
+                    <div className="col-2"/>
                 </div>
             </li>
-            <ExpenseList />
+            <ExpenseList gid={gid}/>
+            <li className="list-group-item pt-3  text-center border-0">
+                <div className="row">
+                    <div className="col-6"/>
+                    <div className="col-2 bg-danger rounded">Total Expense</div>
+                    {/*TODO: its not working*/}
+                    <div className="col-2 bg-danger rounded">{ () => getExpense()}</div>
+                    <div className="col-2"/>
+                </div>
+            </li>
         </>
     );
 }

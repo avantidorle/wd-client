@@ -1,0 +1,59 @@
+
+.fj-centerBox{
+   height: 500px;
+   width: 101%;
+}
+
+.fj-title-font{
+    font-family: "Lucida Handwriting", cursive;
+    font-weight: bold ;
+}
+
+.tiledBackground {
+    background-size: 50%;
+    height: 400px;
+    width: 100%;
+    color: #ccf1ee;
+}
+
+.fj-background-color{
+    background-color: black;
+}
+
+.fj-footer{
+    height: auto;
+}
+
+
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    font-size: xxx-large;
+}
+
+.centered-small {
+    font-size:large;
+}
+
+.centered-large{
+    font-size: xxx-large;
+}
+
+.fj-thirdRow{
+    height: auto;
+    background-color: #020c0c;
+}
+
+.fj-group-icon{
+    color: #ec6613;
+}
+
+.fj-calender-icon{
+    color: #ec1366;
+}
+
+.fj-money-icon{
+    color: #54cc24;
+}

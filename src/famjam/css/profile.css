@@ -34,6 +34,10 @@
     color: white;
 }
 
+#edit-details{
+    width: 70%;
+}
+
 .wd-edit-title{
     padding-left: 1px;
     padding-right: 1px;
