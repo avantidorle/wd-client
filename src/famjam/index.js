@@ -5,8 +5,6 @@ import PerGroupScreen from "./PerGroupScreen";
 import "./css/index.css";
 
 const Famjam = ({groups}) => {
-
-
   return (
     <div className="row mt-2">
       <div className="col-1">

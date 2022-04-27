@@ -3,6 +3,7 @@ export const CREATE_USER = 'CREATE_USER';
 export const FIND_ALL_USERS = 'FIND_ALL_USERS';
 export const FIND_ONE_USER = 'FIND_ONE_USER';
 export const FIND_GOOGLE_USER = 'FIND_GOOGLE_USER'
+export const UPDATE_USERS = 'UPDATE_USERS';
 
 export const findAllUsers = async (dispatch) => {
     const users = await service.findAllUsers();
@@ -28,4 +29,14 @@ export const createUser = async (dispatch, user,email) => {
         type: CREATE_USER,
         newUser
     });
+
 }
+
+export const updateUsers = async (dispatch, users) => {
+    console.log(users);
+     const status = await service.updateUsers(users);
+     dispatch({
+       type: UPDATE_USERS,
+       users
+     });
+    }
