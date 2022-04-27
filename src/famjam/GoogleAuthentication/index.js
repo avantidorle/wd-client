@@ -57,6 +57,7 @@ function GoogleAuthentication() {
         console.log(getUserDetails().then(async r => {
                 console.log(r)
                 console.log(r.email)
+            sessionStorage.setItem("currentUserEmail",r.email);
                 await findOneUser(dispatch, r.email).then(res => {
                         console.log(res);
                         console.log(users);
