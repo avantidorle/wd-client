@@ -3,8 +3,13 @@ import { getMyGoogleCalendarsList } from "./calendarApi.js";
 import {getUserDetails} from './userDetails.js';
 import background from "./vect.png";
 import "../css/landing.css"
+import {useDispatch, useSelector} from "react-redux";
+import {findOneUser} from "../actions/users-action";
 
 function GoogleAuthentication() {
+    const users = useSelector(state => state.users);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         handleTokenFromQueryParams();
     }, []);
@@ -49,9 +54,30 @@ function GoogleAuthentication() {
         sessionStorage.setItem("accessToken", token);
         sessionStorage.setItem("refreshToken", refreshToken);
         sessionStorage.setItem("expirationDate", expirationDate);
-        window.location.href="http://localhost:3000/famjam/registar";
-        console.log(getMyGoogleCalendarsList());
-        console.log(getUserDetails())
+        console.log(getUserDetails().then(async r => {
+                console.log(r)
+                console.log(r.email)
+                await findOneUser(dispatch, r.email).then(res => {
+                        console.log(res);
+                        console.log(users);
+                        console.log("r.email" + r.email);
+                        if (res === undefined) {
+                            console.log("user not match");
+                        } else if (r.email === users.email) {
+                            console.log("user found");
+                        }
+                    }
+                )
+            }
+
+        ));
+
+
+
+
+        // window.location.href="http://localhost:3000/famjam/registar";
+        //console.log(getMyGoogleCalendarsList());
+        //console.log(getUserDetails())
     };
 
     const signOut = () => {

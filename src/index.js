@@ -9,12 +9,14 @@ import expenseReducer from "./famjam/reducers/expense-reducer";
 import todoReducer from "./famjam/reducers/todo-reducer";
 import groupReducer from "./famjam/reducers/group-reducer.js";
 import googleReducer from "./famjam/reducers/google-reducer.js";
+import userReducer from "./famjam/reducers/users-reducer";
 
 const reducer = combineReducers({
   expense: expenseReducer,
   section: todoReducer,
   group: groupReducer,
-    gusers: googleReducer
+    users: userReducer,
+  gusers: googleReducer
 });
 
 const store = createStore(reducer);

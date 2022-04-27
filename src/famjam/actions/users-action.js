@@ -20,15 +20,6 @@ export const findOneUser = async (dispatch, email) => {
     });
 }
 
-export const findGoogleUser = async (dispatch) => {
-    const gusers = await service.findGoogleUser();
-    dispatch({
-        type: FIND_GOOGLE_USER,
-        gusers
-    });
-}
-
-
 
 export const createUser = async (dispatch, user,email) => {
     const newUser = await service.createUser(user,email);

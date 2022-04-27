@@ -7,22 +7,25 @@ import {Button, Form} from "react-bootstrap";
 import {getUserDetails} from "../GoogleAuthentication/userDetails";
 import {Link} from "react-router-dom";
 import HomeScreen from "../PerGroupScreen/HomeScreen";
+import ProfileScreen from "../PerGroupScreen/ProfileScreen";
 
 const UserList = () => {
     const users = useSelector(state => state.users);
     const gusers = useSelector(state => state.gusers);
     const dispatch = useDispatch();
 
-
+    const [newUser, setNewUser] = useState(null)
     const [fname, setfname] = useState("");
     const [lname, setlname] = useState("");
     const [email, setEmail] = useState(gusers.email);
     let gmail = "abc"
 
     const [userList, setUserList] = useState({users:'New User'});
-    let newUser = true;
-
-    useEffect(() => {getUserDetails().then(r =>{
+    // let newUser;
+    console.log("newUser before useEffect:" + newUser)
+    useEffect(() => {
+        console.log("before calling getUserDetails")
+        getUserDetails().then(r =>{
         console.log(r)
         gmail = r.email;
         setEmail(r.email);
@@ -31,29 +34,35 @@ const UserList = () => {
         findOneUser(dispatch,email).then(r=>{
             console.log(r);
             if(r===undefined){
-                newUser = true;
+                setNewUser(true);
+                console.log("went inside undefined condition")
+            } else {
+                console.log("went inside  else undefined condition")
+                setNewUser(false);
             }
+            console.log("newUser:" + newUser)
             console.log("user found")
         });
-    })});
-    console.log(gusers);
-    console.log(users);
-    console.log("Email is "  +email);
-
-    console.log(users);
-    if(users !== null) {
-        if( users.length !== 0){
-            console.log(users.email);
-            console.log(email)
-            if(users.email === email){
-                newUser=false;
-            }
-        }
-    }
+    })},[]);
+    // console.log(gusers);
+    // console.log(users);
+    // console.log("Email is "  +email);
+    //
+    // console.log(users);
+    // if(users !== null && users !== undefined) {
+    //     if( users.length !== 0){
+    //         console.log(users.email);
+    //         console.log(email)
+    //         if(users.email === email){
+    //             newUser=false;
+    //         }
+    //     }
+    // }
 
     return (
+
         <div>
-        { newUser ? (
+        { newUser !== undefined && newUser === true ? (
             <div className="bg-gradient">
                 <div> <h4 className="text-center mt-3 ">Complete Profile</h4></div>
                 <Form className="ps-5 pe-5">
@@ -126,7 +135,7 @@ const UserList = () => {
             </Form>
 
             </div>
-            ): (<div><HomeScreen/></div>)}
+            ):newUser !== undefined && newUser === false ?  (<div><ProfileScreen/></div>) : <div></div> }
         </div>
     );
 }
