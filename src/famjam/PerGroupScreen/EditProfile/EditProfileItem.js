@@ -20,7 +20,7 @@ const getDate=(birthday)=>{
         <div>
              <div className="wd-edit-title">
                        <div className="wd-cancel-button">
-                            <Link to="/famjam/group1/profile">
+                            <Link to="/famjam">
                             <i className="fas fa-times"/>
                             </Link>
                         </div>
@@ -30,7 +30,7 @@ const getDate=(birthday)=>{
 
                         <Link
                           className="btn btn-primary rounded-pill" id="save"
-                          to="/famjam/group1/profile" type="submit" block
+                          to="/famjam" type="submit" block
                           onClick={() => updateUsers(dispatch, {...users,
                           firstName: firstName,
                           lastName: lastName,

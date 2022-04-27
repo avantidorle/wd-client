@@ -1,4 +1,5 @@
 import * as service from '../services/user-service';
+
 export const CREATE_USER = 'CREATE_USER';
 export const FIND_ALL_USERS = 'FIND_ALL_USERS';
 export const FIND_ONE_USER = 'FIND_ONE_USER';

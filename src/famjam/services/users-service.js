@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:4000/famjam/group1/profile';
+const API_BASE = 'http://localhost:4000/famjam/users';
 const USERS_API = `${API_BASE}`;
 
 export const findAllUsers = async () => {
