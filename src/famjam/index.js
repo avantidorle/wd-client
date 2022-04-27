@@ -4,9 +4,13 @@ import "./css/index.css";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import expenseReducer from "./reducers/expense-reducer";
+import postsReducer from "./reducers/posts-reducer";
+import usersReducer from "./reducers/users-reducer";
 
 const reducer = combineReducers({
-  expense: expenseReducer
+  expense: expenseReducer,
+  posts: postsReducer,
+  users: usersReducer
 });
 
 

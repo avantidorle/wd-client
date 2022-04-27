@@ -43,6 +43,15 @@
 .wd-save-button{
     margin-left: auto;
     margin-bottom: 5px;
-    color: white;
 }
 
+#edit-details{
+    width: 70%;
+
+}
+
+#save {
+
+    margin-left: auto;
+        margin-bottom: 5px;
+}
