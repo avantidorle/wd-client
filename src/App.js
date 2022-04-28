@@ -27,7 +27,7 @@ function App() {
         <div className="ms-4 me-4">
             <Routes>
 
-                 <Route path="/" element={ <GoogleAuthentication/>}/>
+                <Route path="/" element={ <GoogleAuthentication/>}/>
                 <Route path="/login" element={ <GoogleAuthentication/>}/>
                 <Route path="/ourstory" element={ <OurStory/>}/>
                 <Route path="/team" element={ <Team/>}/>

@@ -4,10 +4,10 @@ import {findAllPosts} from "../../actions/posts-action";
 import PostsListItem from "./PostsListItem";
 
 
-const PostsList = () => {
+const PostsList = ({gid}) => {
 const posts = useSelector(state => state.posts);
     const dispatch = useDispatch();
-    useEffect(() => {findAllPosts(dispatch)});
+    useEffect(() => {findAllPosts(dispatch, gid)});
 
   return (
   <>
@@ -15,7 +15,7 @@ const posts = useSelector(state => state.posts);
     <ul className="list-group1">
       {   posts.map && posts.map(posts =>
           <PostsListItem key={posts._id}
-           posts={posts}/>)
+           posts={posts} gid={gid}/>)
       }
     </ul>
     </>

@@ -6,7 +6,7 @@ import {createPosts} from "../../actions/posts-action";
 import "../../css/home.css";
 
 
-const HomeScreen = () => {
+const HomeScreen = ({gid}) => {
 const [newPosts, setNewPosts] =
       useState({post: ''});
       useState({postImage:''});
@@ -24,14 +24,14 @@ const [newPosts, setNewPosts] =
           post: e.target.value})}>
           </textarea></span>
           <br/>
-          <span>< button onClick={() => createPosts(dispatch, newPosts)}
+          <span>< button onClick={() => createPosts(dispatch, newPosts, gid)}
           className = "btn btn-primary rounded-pill" type="button" id="post">Post</button>
           <div className="file_input-container">
                   <FileBase64
                   multiple = {false}
                   onDone = {({base64}) => setNewPosts({...newPosts,
                   postImage: base64})}/></div></span><br/>
-        <PostsList/></div>
+        <PostsList gid={gid}/></div>
         <div className="col-2"></div>
         </>
     );
