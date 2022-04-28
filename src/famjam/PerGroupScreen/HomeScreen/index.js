@@ -8,7 +8,7 @@ import "../../css/home.css";
 
 const HomeScreen = () => {
 const [newPosts, setNewPosts] =
-      useState({post: ''});
+      useState({post: '', postedBy: sessionStorage.getItem('currentUserId')});
       useState({postImage:''});
       const dispatch = useDispatch();
     return(

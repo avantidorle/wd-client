@@ -18,7 +18,7 @@ const userReducer = (state = [], action) => {
             }else{
                 sessionStorage.setItem("dbUserEmail",action.users.email);
                 sessionStorage.setItem("currentUserId",action.users._id);
-
+                console.log("currentUserId",sessionStorage.getItem("currentUserId"));
             }
             return action.users;
         case CREATE_USER:
