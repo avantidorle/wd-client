@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {deletePosts,updatePosts} from "../../actions/posts-action";
 
 
-const PostsListItem = ({posts}) => {
+const PostsListItem = ({posts, gid}) => {
 const [disp, setDisp ] = useState("Hide");
  const [comments, setnewcomments] = useState(posts.comments);
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const [disp, setDisp ] = useState("Hide");
 		    	<img src={posts.image} width="55" className="fj-display-img"/>
 		    	<span className="spanning"><text className="wd-topic-heading ps-2">{posts.author}  </text>
 		    	<a href="#" className="wd-follow-handle ps-2">@{posts.handle}</a>
-                 <i className="fa fa-trash fa-pull-right" onClick={() => deletePosts(dispatch, posts)}></i></span><br/>
+                 <i className="fa fa-trash fa-pull-right" onClick={() => deletePosts(dispatch, posts, gid)}></i></span><br/>
 		    	<span className="wd-topic-description">{posts.post}</span><br/>
                 <div className="wd-head-image">
                 <img src={posts.postImage} className="wd-topic-heading-image pt-2"/></div>
@@ -22,7 +22,7 @@ const [disp, setDisp ] = useState("Hide");
                 <span>
                 <i onClick={() => updatePosts(dispatch, {
                 ...posts,
-                likes: posts.likes + 1})} className="far fa-thumbs-up ms-2 me-2 pt-2"></i>
+                likes: posts.likes + 1}, gid)} className="far fa-thumbs-up ms-2 me-2 pt-2"></i>
                 {posts.likes}
 
                 <i class="fa-solid fa-comment ms-3 me-1" onClick={() => setDisp("Show")}/>Comment</span>

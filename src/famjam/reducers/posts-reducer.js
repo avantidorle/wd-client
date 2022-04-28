@@ -6,7 +6,7 @@ const postsReducer = (state = [], action) => {
         return action.posts;
      case CREATE_POSTS:
              const newPosts = {
-                 posts: action.posts,
+                 posts: action.newPosts,
              }
              return [
                  ...state,
