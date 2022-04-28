@@ -10,8 +10,16 @@ const userReducer = (state = [], action) => {
         case FIND_ALL_USERS:
             return action.users;
         case FIND_ONE_USER:
-            console.log("inside reducer action user is")
-            console.log(action.users)
+            console.log("inside reducer action user is");
+            console.log(action.users);
+            if(action.users === null){
+                console.log("null check");
+                sessionStorage.setItem("dbUserEmail",undefined);
+            }else{
+                sessionStorage.setItem("dbUserEmail",action.users.email);
+                sessionStorage.setItem("currentUserId",action.users._id);
+
+            }
             return action.users;
         case CREATE_USER:
             const newUser = {
