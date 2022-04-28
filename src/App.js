@@ -13,6 +13,8 @@ import EditProfile from "./famjam/PerGroupScreen/EditProfile";
 import GroupSettings from "./famjam/PerGroupScreen/GroupSettings";
 import Famjam from "./famjam";
 import GoogleAuthentication from "./famjam/GoogleAuthentication";
+import OurStory from "./famjam/OurStory";
+import Team from "./famjam/Team";
 import RegistarScreen from './famjam/RegistarScreen'
 
 function App() {
@@ -27,9 +29,12 @@ function App() {
 
                  <Route path="/" element={ <GoogleAuthentication/>}/>
                 <Route path="/login" element={ <GoogleAuthentication/>}/>
+                <Route path="/ourstory" element={ <OurStory/>}/>
+                <Route path="/team" element={ <Team/>}/>
                 <Route path="/famjam" element={<Famjam groups={groups}/>}>
                 <Route path="/famjam" element={<ProfileScreen/>}/>
                 <Route path="/famjam/registar" element={ <RegistarScreen/>}/>
+
                 <Route path="/famjam/editprofile" element={<EditProfile/>}/>
                     {
                         groups.map && groups.map(group =>
