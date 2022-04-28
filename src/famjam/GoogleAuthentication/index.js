@@ -4,10 +4,12 @@ import {getUserDetails} from './userDetails.js';
 import background from "./vect.png";
 import "../css/landing.css"
 import {useDispatch, useSelector} from "react-redux";
-import {findOneUser} from "../actions/users-action";
+import {findAllUsers, findOneUser} from "../actions/users-action";
 
 function GoogleAuthentication() {
     const users = useSelector(state => state.users);
+    // console.log("USERSSSSSS OUT",users);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -54,25 +56,23 @@ function GoogleAuthentication() {
         sessionStorage.setItem("accessToken", token);
         sessionStorage.setItem("refreshToken", refreshToken);
         sessionStorage.setItem("expirationDate", expirationDate);
-        console.log(getUserDetails().then(async r => {
+        getUserDetails().then(async r => {
                 console.log(r)
                 console.log(r.email)
             sessionStorage.setItem("currentUserEmail",r.email);
-                await findOneUser(dispatch, r.email).then(res => {
-                        console.log(res);
-                        console.log(users);
-                        console.log("r.email" + r.email);
-                        if (res === undefined) {
-                            console.log("user not match");
-                        } else if (r.email === users.email) {
-                            console.log("user found");
-                        }
-                    }
-                )
+                sessionStorage.setItem("fname",r.given_name);
+                sessionStorage.setItem("lname",r.family_name);
+                let res2 = await findOneUser(dispatch, r.email);
+                console.log(sessionStorage.getItem("dbUserEmail"));
+                let dbUserEmail = sessionStorage.getItem("dbUserEmail")
+                if(dbUserEmail === "undefined"){
+                    console.log("user not found")
+                    window.location.href="http://localhost:3000/famjam/register";
+                }else{
+                   window.location.href = "http://localhost:3000/famjam";
+                }
             }
-
-        ));
-
+        );
 
 
 

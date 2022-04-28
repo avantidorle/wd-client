@@ -29,7 +29,7 @@ function App() {
                 <Route path="/login" element={ <GoogleAuthentication/>}/>
                 <Route path="/famjam" element={<Famjam groups={groups}/>}>
                 <Route path="/famjam" element={<ProfileScreen/>}/>
-                <Route path="/famjam/registar" element={ <RegistarScreen/>}/>
+                <Route path="/famjam/register" element={ <RegistarScreen/>}/>
                 <Route path="/famjam/editprofile" element={<EditProfile/>}/>
                     {
                         groups.map && groups.map(group =>
