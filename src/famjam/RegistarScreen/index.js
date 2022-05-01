@@ -8,6 +8,8 @@ import {getUserDetails} from "../GoogleAuthentication/userDetails";
 import {Link} from "react-router-dom";
 import HomeScreen from "../PerGroupScreen/HomeScreen";
 import ProfileScreen from "../PerGroupScreen/ProfileScreen";
+import FileBase64 from 'react-file-base64';
+import "../css/register.css"
 
 const UserList = () => {
     // const users = useSelector(state => state.users);
@@ -80,6 +82,31 @@ const UserList = () => {
                             birthday: event.target.value
                         })} />
                     </Form.Group>
+
+                    <div className="row">
+                        <div className="col-6">
+                            <Form.Label>Banner Profile</Form.Label>
+                            <Form.Group>
+                                <div className="file_input-container wd-register-banner mt-3">
+                                    <FileBase64
+                                        multiple = {false}
+                                        onDone = {({base64}) => setUserList({...userList,
+                                            bannerPicture: base64})}/>
+                                </div>
+                            </Form.Group>
+                        </div>
+                        <div className="col-6">
+                            <Form.Label> Profile Picture</Form.Label>
+                            <Form.Group>
+                                <div className="file_input-container wd-register-banner mt-3">
+                                    <FileBase64
+                                        multiple = {false}
+                                        onDone = {({base64}) => setUserList({...userList,
+                                            profilePicture: base64})}/></div>
+                            </Form.Group>
+                        </div>
+                    </div>
+
                 <Link className="btn btn-primary rounded-pill float-end"
                       to="/famjam" onClick={() =>createUser(dispatch,userList,sessionStorage.getItem("currentUserEmail")) }> Done
                 </Link>

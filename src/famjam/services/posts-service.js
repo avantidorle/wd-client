@@ -8,13 +8,6 @@ export const findAllPosts = async (gid) => {
     return posts;
 }
 
-export const findAllPostsByUser  = async (userId) => {
-    const response = await axios.get(`${POSTS_API}/posts/user/${userId}`);
-    console.log("inside service");
-    console.log(response);
-    return response.data;
-}
-
 export const createPosts = async (posts, gid) => {
     const response = await axios.post(`${POSTS_API}/${gid}/posts`, posts)
     return response.data;

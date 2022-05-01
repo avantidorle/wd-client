@@ -2,6 +2,7 @@ import axios from 'axios';
 import {getToken} from "../GoogleAuthentication/tokens";
 
 const API_BASE = 'http://localhost:4000/famjam/users';
+const POSTS_BASE = 'http://localhost:4000/famjam/';
 const USERS_API = `${API_BASE}`;
 
 //export const findAllUsers = async () => {
@@ -18,6 +19,7 @@ export const findOneUser = async (email) => {
 
 export const findUserById = async (usersId) => {
     const response = await axios.get(`${USERS_API}/id/${usersId}`);
+    console.log(response)
     return response.data;
 }
 
@@ -55,3 +57,11 @@ export const updateUsers = async (users) => {
     console.log("dnwkej");
     return response.data;
 }
+
+export const findAllPostsByUser  = async (userId) => {
+    console.log("inside service");
+    const response = await axios.get(`${POSTS_BASE}posts/user/${userId}`);
+    console.log(response);
+    return response.data;
+}
+

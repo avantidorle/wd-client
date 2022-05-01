@@ -26,8 +26,8 @@ export const findOneUser = async (dispatch, email) => {
 
 
 export const createUser = async (dispatch, user,email) => {
+    console.log("inside create user");
     const newUser = await service.createUser(user,email);
-
     dispatch({
         type: CREATE_USER,
         newUser
