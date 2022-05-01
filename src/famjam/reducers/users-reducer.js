@@ -1,4 +1,4 @@
-import {FIND_ALL_USERS, FIND_ONE_USER, CREATE_USER,UPDATE_USERS} from "../actions/users-action";
+import {FIND_ALL_USERS, FIND_ONE_USER, CREATE_USER,UPDATE_USERS, FIND_USER_ID} from "../actions/users-action";
 
 const userReducer = (state = [], action) => {
     switch (action.type) {
@@ -9,11 +9,10 @@ const userReducer = (state = [], action) => {
             action.users : users);
         case FIND_ALL_USERS:
             return action.users;
+        case FIND_USER_ID:
+            return action.users;
         case FIND_ONE_USER:
-            console.log("inside reducer action user is");
-            console.log(action.users);
             if(action.users === null){
-                console.log("null check");
                 sessionStorage.setItem("dbUserEmail",undefined);
             }else{
                 sessionStorage.setItem("dbUserEmail",action.users.email);

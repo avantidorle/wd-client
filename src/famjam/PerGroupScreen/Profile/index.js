@@ -1,16 +1,17 @@
 import React, {useState,useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import ProfileItem from "./ProfileItem";
-import {findAllUsers} from "../../actions/users-action";
+import {findAllUsers, findUserById} from "../../actions/users-action";
 
 const Profiles = () => {
 const users = useSelector(state => state.users);
     const dispatch = useDispatch();
-    useEffect(() => {findAllUsers(dispatch)});
+   findUserById(dispatch, sessionStorage.getItem("currentUserId")).then(r => {console.log(r)});
   return (
-        users && users.map && users.map(users =>
-          <ProfileItem key={users._id}
-                        users={users}/>)
+      <>
+          <ProfileItem users={users}/>
+      </>
+
   );
 }
 

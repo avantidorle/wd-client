@@ -3,6 +3,7 @@ export const CREATE_POSTS = 'CREATE_POSTS';
 export const DELETE_POSTS = 'DELETE_POSTS';
 export const FIND_ALL_POSTS = 'FIND_ALL_POSTS';
 export const UPDATE_POSTS = 'UPDATE_POSTS';
+export const FIND_USER_POSTS = 'FIND_USER_POSTS';
 
 export const findAllPosts = async (dispatch, gid) => {
  const posts = await service.findAllPosts(gid);
@@ -34,4 +35,14 @@ export const updatePosts = async (dispatch, posts, gid) => {
    type: UPDATE_POSTS,
    posts
  });
+}
+
+export const findAllPostsByUser = async (dispatch) =>{
+    const response = await service.findAllPostsByUser(sessionStorage.getItem("currentUserId"));
+    console.log("inside action");
+    console.log(response)
+    dispatch({
+        type: FIND_USER_POSTS,
+        response
+    });
 }

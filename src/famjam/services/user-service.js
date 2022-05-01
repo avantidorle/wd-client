@@ -12,10 +12,15 @@ const USERS_API = `${API_BASE}`;
 export const findOneUser = async (email) => {
     console.log("looking for "+ email);
     const response = await axios.get(`${USERS_API}/${email}`);
-    console.log("inside service user response is ");
-    console.log(response);
     return response.data;
 }
+
+
+export const findUserById = async (usersId) => {
+    const response = await axios.get(`${USERS_API}/id/${usersId}`);
+    return response.data;
+}
+
 
 export const findGoogleUser = async () =>{
     const token = await getToken();
