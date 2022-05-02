@@ -60,6 +60,7 @@ function GoogleAuthentication() {
                 console.log(r)
                 console.log(r.email)
             sessionStorage.setItem("currentUserEmail",r.email);
+                sessionStorage.setItem("currentUserId",r._id);
                 sessionStorage.setItem("fname",r.given_name);
                 sessionStorage.setItem("lname",r.family_name);
                 let res2 = await findOneUser(dispatch, r.email);
