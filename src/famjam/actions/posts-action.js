@@ -14,6 +14,7 @@ export const findAllPosts = async (dispatch, gid) => {
 }
 
 export const createPosts = async (dispatch, posts, gid) => {
+    console.log("inside create posts", posts);
     const newPosts = await service.createPosts(posts, gid);
     dispatch({
         type: CREATE_POSTS,

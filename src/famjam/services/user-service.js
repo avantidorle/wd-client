@@ -16,7 +16,6 @@ export const findOneUser = async (email) => {
     return response.data;
 }
 
-
 export const findUserById = async (usersId) => {
     const response = await axios.get(`${USERS_API}/id/${usersId}`);
     console.log(response)
