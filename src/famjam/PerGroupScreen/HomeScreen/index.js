@@ -62,7 +62,10 @@ const HomeScreen = ({gid}) => {
 
 
         </div>
-        <div className="col-2"></div>
+        <div className="col-3">
+            <EventPosts/>
+        </div>
+        </div>
         </>
     );
 }
