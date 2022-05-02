@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getMyGoogleCalendarsList } from "./calendarApi.js";
+import {Link} from "react-router-dom";
 import {getUserDetails} from './userDetails.js';
 import background from "./vect.png";
 import "../css/landing.css"
@@ -113,8 +114,10 @@ function GoogleAuthentication() {
                                     <div className="col-7"/>
                                     <div className="col-5">
                         <span>
-                             <button className="bg-transparent border-0 text-light p-3"><h6 className="fj-title-font">Our story</h6></button>
-                            <button className="bg-transparent border-0 text-light p-3" ><h6 className="fj-title-font">Team</h6></button>
+                        <Link to="../ourstory">
+                             <button className="bg-transparent border-0 text-light p-3"><h6 className="fj-title-font">Our story</h6></button></Link>
+                        <Link to="../team">
+                            <button className="bg-transparent border-0 text-light p-3" ><h6 className="fj-title-font">Team</h6></button></Link>
                             <button className="bg-transparent border-0 text-light p-3" onClick={createGoogleAuthLink}><h6 className="fj-title-font">SignUp</h6></button>
                         </span>
                                     </div>

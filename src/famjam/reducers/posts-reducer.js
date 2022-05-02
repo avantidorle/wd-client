@@ -1,4 +1,4 @@
-import {FIND_ALL_POSTS,DELETE_POSTS,CREATE_POSTS,UPDATE_POSTS} from "../actions/posts-action";
+import {FIND_ALL_POSTS,DELETE_POSTS,CREATE_POSTS,UPDATE_POSTS,FIND_USER_POSTS} from "../actions/posts-action";
 
 const postsReducer = (state = [], action) => {
   switch (action.type) {

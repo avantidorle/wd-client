@@ -2,15 +2,21 @@ import axios from 'axios';
 import {getToken} from "../GoogleAuthentication/tokens";
 
 const API_BASE = 'http://localhost:4000/famjam/users';
+const POSTS_BASE = 'http://localhost:4000/famjam/';
 const USERS_API = `${API_BASE}`;
 
 export const findOneUser = async (email) => {
     console.log("looking for "+ email);
     const response = await axios.get(`${USERS_API}/${email}`);
-    console.log("inside service user response is ");
-    console.log(response);
     return response.data;
 }
+
+export const findUserById = async (usersId) => {
+    const response = await axios.get(`${USERS_API}/id/${usersId}`);
+    console.log(response)
+    return response.data;
+}
+
 
 export const findGoogleUser = async () =>{
     const token = await getToken();
@@ -46,8 +52,10 @@ export const updateUsers = async (users) => {
     return response.data;
 }
 
-export const findUserById = async (usersId) => {
-    console.log("userId in findUserById",usersId);
-    const response = await axios.get(`${USERS_API}/id/${usersId}`);
+export const findAllPostsByUser  = async (userId) => {
+    console.log("inside service");
+    const response = await axios.get(`${POSTS_BASE}posts/user/${userId}`);
+    console.log(response);
     return response.data;
 }
+

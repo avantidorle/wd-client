@@ -16,7 +16,7 @@ const reducer = combineReducers({
   expense: expenseReducer,
   section: todoReducer,
   group: groupReducer,
-    users: userReducer,
+  users: userReducer,
   gusers: googleReducer,
   posts: postsReducer
 });

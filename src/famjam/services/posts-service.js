@@ -1,11 +1,10 @@
 import axios from 'axios';
-
 const API_BASE = 'http://localhost:4000/famjam';
 const POSTS_API = `${API_BASE}`;
 
 export const findAllPosts = async (gid) => {
     const response = await axios.get(`${POSTS_API}/${gid}/posts`);
-    const posts = response.data;
+    const posts = response.data.reverse();
     return posts;
 }
 
