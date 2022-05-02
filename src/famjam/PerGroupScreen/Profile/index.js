@@ -6,7 +6,7 @@ import {findAllUsers} from "../../actions/users-action";
 const Profiles = () => {
 const users = useSelector(state => state.users);
     const dispatch = useDispatch();
-    useEffect(() => {findAllUsers(dispatch)});
+    //useEffect(() => {findAllUsers(dispatch)});
   return (
         users && users.map && users.map(users =>
           <ProfileItem key={users._id}

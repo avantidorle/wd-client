@@ -3,6 +3,7 @@ import "./expense.css"
 import {Form, Button} from "react-bootstrap"
 import Popup from 'reactjs-popup';
 import {deleteExpense, updateExpense} from "../../actions/expense-action";
+import {isExpenseAdmin, isAdmin} from "../../RolesManager/roles-action";
 import React, {useState} from "react";
 
 const ExpenseListItem = ({expense, gid}) => {
@@ -11,10 +12,23 @@ const ExpenseListItem = ({expense, gid}) => {
     const [title, setTitle] = useState(expense.title);
     const [amount, setAmount] = useState(expense.amount);
     const [date, setDate] = useState(expense.paymentDate);
-    const [payee,setPayee] = useState(expense.payee)
+    const [payee,setPayee] = useState(expense.payee);
+
+    isExpenseAdmin(gid, sessionStorage.getItem("currentUserId")).then((result)=>{
+        sessionStorage.setItem("isExpenseAdmin", result);
+    });
+
+    const isExpAdmin = sessionStorage.getItem("isExpenseAdmin");
+
+    isAdmin(gid, sessionStorage.getItem("currentUserId")).then((result)=>{
+        sessionStorage.setItem("isAdmin", result);
+    });
+
+    const isGroupAdmin = sessionStorage.getItem("isAdmin");
+
     const getDate=(date)=>{
         return new Date(date).toLocaleDateString()
-    }
+    };
     return(
         <>
             <li className="list-group-item pt-3 text-center">
@@ -24,6 +38,9 @@ const ExpenseListItem = ({expense, gid}) => {
                     <div className="col-2">{getDate(expense.paymentDate)}</div>
                     <div className="col-2">{expense.amount}$</div>
                     <div className="col-2">
+
+                    { isExpAdmin === "true" || isGroupAdmin === "true"?
+                        <>
                         <Popup trigger={<button className="bg-transparent border-0" >
                                 <i className="fa-solid fa-pen fa-inverse"/>
                             </button>  }
@@ -121,6 +138,8 @@ const ExpenseListItem = ({expense, gid}) => {
                         <button className="bg-transparent border-0" onClick={() => deleteExpense(dispatch, expense, gid)}>
                             <i className="fas fa-trash-can ms-2 fa-inverse"/>
                         </button>
+                        </>
+                    : <></>}
                     </div>
                 </div>
             </li>

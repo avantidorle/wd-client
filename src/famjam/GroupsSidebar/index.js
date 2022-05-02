@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {Link, useLocation} from "react-router-dom";
 import Popup from 'reactjs-popup';
 import {Form, Button} from "react-bootstrap";
-import {createGroup} from "../actions/group-action";
+import {createGroup, signOut} from "../actions/group-action";
 import '../css/index.css';
 
 
@@ -15,6 +15,7 @@ const GroupsSidebar = ({groups}) => {
     };
     const loc = useLocation();
     const [groupName, setGroupName] = useState("");
+    const loggedInUser = sessionStorage.getItem("currentUserId");
 
     const dispatch = useDispatch();
     return(
@@ -35,6 +36,9 @@ const GroupsSidebar = ({groups}) => {
                     </Link>
                  )
             }
+            <div className="list-group-item btn">
+            <i class="fa fa-sign-out" aria-hidden="true" onClick={() => signOut()}>
+            </i></div>
             <Popup trigger={<div className="list-group-item btn wd-float-left" width="20%"><i className="fas fa-plus"></i></div>} modal contentStyle={contentStyle}>
                 <div className="bg-secondary border rounded border-light p-3" width="100px" height="100px">
 
@@ -50,7 +54,9 @@ const GroupsSidebar = ({groups}) => {
                         </div>
                         <div className="d-grid">
                              <button className="btn btn-dark mt-3 mb-2" variant="success" type="button" block
-                             onClick={() => createGroup(dispatch,{groupName: groupName})} >
+                             onClick={() => createGroup(dispatch, {groupName: groupName,
+                                                                   admin: loggedInUser,
+                                                                   expAdmin: loggedInUser})} >
                                  Create
                              </button>
                         </div>

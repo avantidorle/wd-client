@@ -4,11 +4,6 @@ import {getToken} from "../GoogleAuthentication/tokens";
 const API_BASE = 'http://localhost:4000/famjam/users';
 const USERS_API = `${API_BASE}`;
 
-//export const findAllUsers = async () => {
-//    const response = await axios.get(USERS_API);
-//    return response.data;
-//}
-
 export const findOneUser = async (email) => {
     console.log("looking for "+ email);
     const response = await axios.get(`${USERS_API}/${email}`);
@@ -38,8 +33,8 @@ export const createUser = async (user,email) => {
     return response.data;
 }
 
-export const findAllUsers = async () => {
-    const response = await axios.get(USERS_API);
+export const findAllUsers = async (gid) => {
+    const response = await axios.get(`${USERS_API}/${gid}`);
     const users = response.data;
     return users;
 }
