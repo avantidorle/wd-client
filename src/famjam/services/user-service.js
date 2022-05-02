@@ -50,3 +50,9 @@ export const updateUsers = async (users) => {
     console.log("dnwkej");
     return response.data;
 }
+
+export const findUserById = async (usersId) => {
+    console.log("userId in findUserById",usersId);
+    const response = await axios.get(`${USERS_API}/id/${usersId}`);
+    return response.data;
+}

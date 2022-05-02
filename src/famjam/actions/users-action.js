@@ -1,4 +1,5 @@
 import * as service from '../services/user-service';
+import {getToken} from "../GoogleAuthentication/tokens";
 
 export const CREATE_USER = 'CREATE_USER';
 export const FIND_ALL_USERS = 'FIND_ALL_USERS';
@@ -24,11 +25,28 @@ export const findOneUser = async (dispatch, email) => {
 
 
 export const createUser = async (dispatch, user,email) => {
+    const token = await getToken();
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({summary: 'FAMJAM-TODOS'})
+    };
+    const requestToCreateCalendar = await fetch(
+        "https://www.googleapis.com/calendar/v3/calendars", requestOptions,
+    )
+    let calendarId = await requestToCreateCalendar.json();
+    user.calendarId=calendarId.id;
     const newUser = await service.createUser(user,email);
 
+
+
+    // console.log("calendarId is " ,calendarId);
     dispatch({
         type: CREATE_USER,
-        newUser
+        newUser,
+        calendarId
     });
 
 }

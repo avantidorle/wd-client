@@ -7,9 +7,18 @@ import {findAllSections} from "../../actions/todo-action";
 import {createSection} from "../../actions/todo-action";
 import {deleteSection} from "../../actions/todo-action";
 import SectionListItem from "./SectionListItem.js"
+import {findUserById} from "../../services/user-service";
 
 const TodoScreen = ({gid}) => {
-
+    let [calendarId, setCalendarId] = useState({calendarId: "calendarId"});
+    useEffect( () => {
+        // console.log(sessionStorage.getItem("currentUserId"))
+        findUserById(sessionStorage.getItem("currentUserId")).then(r => {
+            console.log("currentUserId response is", r);
+            setCalendarId(r.calendarId)
+        })}, [],
+    );
+    console.log("currentUser.calendarId",calendarId);
     const [disp, setDisp ] = useState("Hide");
     const [newSection, setSection] = useState({title:''});
     const sections = useSelector(state => state.section);
@@ -23,7 +32,7 @@ const TodoScreen = ({gid}) => {
         <div className="col-1 mt-2">
             {disp === "Show" && <></>}
             {disp === "Hide" &&
-                <i class="fa-xl fa-solid fa-circle-plus float-end mt-4 me-4" title="Add section" onClick={() => setDisp("Show")}></i>
+                <i className="fa-xl fa-solid fa-circle-plus float-end mt-4 me-4" title="Add section" onClick={() => setDisp("Show")}/>
             }
         </div>
     </div>
