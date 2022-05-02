@@ -16,9 +16,9 @@ const PostsListItem = ({posts, gid}) => {
                     <a href="#" className="wd-follow-handle ps-2">@{posts.handle}</a>
                      <i className="fa fa-trash fa-pull-right" onClick={() => deletePosts(dispatch, posts, gid)}></i></span><br/>
                     <span className="wd-topic-description">{posts.post}</span><br/>
-                    <div className="wd-head-image">
-                    <img src={posts.postImage} className="wd-topic-heading-image pt-2"/></div>
-
+                    {
+                        posts.postImage? <div className="wd-head-image"> <img src={posts.postImage} className="wd-topic-heading-image pt-2"/></div> : <></>
+                    }
                     <span>
                     <i onClick={() => updatePosts(dispatch, {
                     ...posts,

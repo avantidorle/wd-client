@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Outlet, useOutletContext, useLocation} from "react-router-dom";
 import NavigationSidebar from "./NavigationSidebar";
 import "../css/index.css";
+import EventPosts from "../Calendar/posts/EventPosts";
 
 const PerGroupScreen = ({gid}) => {
 

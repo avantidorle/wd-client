@@ -33,7 +33,7 @@ input.form-control::placeholder {
 #exampleTextarea {
     margin-top: -50px;
     margin-left: 70px;
-    width: 92%;
+    width: 90%;
     height: 100px;
 }
 
@@ -61,7 +61,7 @@ input.form-control::placeholder {
     margin-left: 90px;
     background-color: black;
     color: gray;
-    width: 85%;
+    width: 80%;
     height: 70px;
     border: transparent;
     border-bottom: 1px groove gray;

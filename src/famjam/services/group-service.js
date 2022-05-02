@@ -8,12 +8,22 @@ export const findAllGroups = async () => {
     return groups;
 }
 
-export const createGroup = async (groupName) => {
-    const response = await axios.post(GROUP_API, groupName);
+export const createGroup = async (groupData) => {
+    const response = await axios.post(GROUP_API, groupData);
     return response.data;
 }
 
 export const deleteGroup = async (gid) => {
     const response = await axios.delete(`${GROUP_API}/${gid}`);
+    return response.data;
+}
+
+export const addUserToGroup = async (data,gid) => {
+    const response = await axios.put(`${GROUP_API}/${gid}`, data);
+    return response.data;
+}
+
+export const deleteUserFromGroup = async (uid, gid) => {
+    const response = await axios.put(`${GROUP_API}/group/${uid}/${gid}`);
     return response.data;
 }

@@ -57,15 +57,19 @@ function GoogleAuthentication() {
         sessionStorage.setItem("accessToken", token);
         sessionStorage.setItem("refreshToken", refreshToken);
         sessionStorage.setItem("expirationDate", expirationDate);
+
+        console.log("WORDSSSSSSSS");
         getUserDetails().then(async r => {
                 console.log(r)
                 console.log(r.email)
             sessionStorage.setItem("currentUserEmail",r.email);
+                sessionStorage.setItem("currentUserId",r._id);
                 sessionStorage.setItem("fname",r.given_name);
                 sessionStorage.setItem("lname",r.family_name);
                 let res2 = await findOneUser(dispatch, r.email);
                 console.log(sessionStorage.getItem("dbUserEmail"));
                 let dbUserEmail = sessionStorage.getItem("dbUserEmail")
+                console.log(dbUserEmail);
                 if(dbUserEmail === "undefined"){
                     console.log("user not found")
                     window.location.href="http://localhost:3000/famjam/register";
