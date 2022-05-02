@@ -34,7 +34,7 @@ export const createUser = async (user,email) => {
 }
 
 export const findAllUsers = async (gid) => {
-    const response = await axios.get(`${USERS_API}/${gid}`);
+    const response = await axios.get(`${USERS_API}/group/${gid}`);
     const users = response.data;
     return users;
 }
