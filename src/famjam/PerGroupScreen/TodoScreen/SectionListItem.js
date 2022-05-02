@@ -42,7 +42,7 @@ const SectionListItem = ({todos, section, gid}) => {
                         <div className="row mt-2 mb-2">
                             <div className="col-2">
 
-                            <input type="date" className="form-control-plaintext text-center text-secondary border border-dark rounded"
+                            <input type="date" required className="form-control-plaintext text-center text-secondary border border-dark rounded"
                                 onChange={(event) => setTodoItem({
                                 ...todoItem,
                                 dueDate: event.target.value

@@ -16,7 +16,7 @@ export const findAllSections = async (dispatch, gid) => {
 }
 
 export const createTodo = async (dispatch, todo, sid, gid) => {
-    const response = await service.createTodo(todo, sid, gid);
+    const response = await service.CreateTodo(todo, sid, gid);
     dispatch({
         type: CREATE_TODO,
         todo

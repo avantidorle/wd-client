@@ -123,7 +123,7 @@ function GoogleAuthentication() {
                             <div className="centered bg-black p-4">
                                 <h2 className=" fj-title-font mt-2 rounded ms-1"> Stay Connected !! </h2>
                                 <div><h5 className="centered-small rounded ms-1"> Organize Tasks, Discover Stories, Manage Expenses .....</h5>
-                                    <h5 className="centered-small rounded ms-1"></h5>
+                                    <h5 className="centered-small rounded ms-1"/>
                                 </div>
                             </div>
                         </div>
