@@ -1,0 +1,63 @@
+.text {
+    color: white;
+    margin-top: 25px;
+    font-size: 25px;
+}
+
+.wd-dpimg{
+    position: sticky;
+    width: 120px;
+    /* float: left; */
+    margin-left: 15px;
+    top: 170px;
+    margin-top: -70px;
+    clip-path: circle();
+    border: 1px solid black;
+
+}
+
+.wd-coverimg{
+    width: 100%;
+    height: 180px;
+}
+
+#edit {
+    float: right;
+    margin-top: 5px;
+    width: 120px;
+}
+
+.wd-title-text{
+    font-weight: bold;
+    margin-left: 1px;
+    font-size: 18px;
+    color: white;
+}
+
+#edit-details{
+    width: 70%;
+}
+
+.wd-edit-title{
+    padding-left: 1px;
+    padding-right: 1px;
+    display: flex;
+}
+
+.wd-save-button{
+    margin-left: auto;
+    margin-bottom: 5px;
+}
+
+#edit-details{
+    width: 70%;
+
+}
+
+
+
+#save {
+
+    margin-left: auto;
+        margin-bottom: 5px;
+}

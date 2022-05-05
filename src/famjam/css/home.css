@@ -1,0 +1,112 @@
+.fj-search-glass{
+	position: absolute;
+	padding-left: 10px;
+	padding-top: 8px;
+	z-index: 1;
+}
+
+input.form-control::placeholder {
+    padding-left: 15px;
+}
+
+.fj-newpost {
+
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+#post {
+    float: right;
+    width: 80px;
+    transform: translate(0px, -18px);
+    margin-right: 4px;
+}
+
+.btn-secondary.disabled {
+    margin-top: 15px;
+    margin-left: 5px;
+    width: 100%;
+    height: 100px;
+}
+
+#exampleTextarea {
+    margin-top: -50px;
+    margin-left: 70px;
+    width: 90%;
+    height: 100px;
+}
+
+.fa-solid.fa-image {
+    margin-right: 30px;
+    margin-top: -15px;
+    float: right;
+}
+
+.file_input-container input[type=file]{
+    margin-right: -35px;
+    margin-top: -15px;
+    float: right;
+}
+
+.fj-display-img1 {
+    clip-path: circle();
+    margin-top: 10px;
+}
+.fj-display-img {
+    clip-path: circle();
+    }
+
+.whatstext {
+    margin-left: 90px;
+    background-color: black;
+    color: gray;
+    width: 80%;
+    height: 70px;
+    border: transparent;
+    border-bottom: 1px groove gray;
+    margin-top: -70px;
+}
+
+.btn.btn-primary.btn-sm.tweet {
+    float: right;
+    margin-top: 10px;
+    border-radius: 20px;
+    width: 90px;
+}
+
+#postlist{
+    list-style-type: none;
+    padding-top: 10px;
+    margin-left: 40px;
+    width: 95%;
+}
+
+.wd-topic-heading {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.wd-topic-heading-image{
+	width: 100%;
+	height: 100%;
+}
+
+.temp {
+    background: transparent;
+}
+
+.temp2 {
+    background: transparent;
+}
+
+.bg-transparent {
+    float: right;
+}
+
+.plane {
+     float: right;
+    background: transparent;
+    color: white;
+}
+
