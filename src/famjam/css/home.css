@@ -110,3 +110,12 @@ input.form-control::placeholder {
     color: white;
 }
 
+@media screen and (max-width: 1200px) {
+      .wd-text {
+        display: none; }
+
+}
+
+.list-group {
+    width: auto;
+}

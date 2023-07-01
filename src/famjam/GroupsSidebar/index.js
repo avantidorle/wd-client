@@ -22,7 +22,7 @@ const GroupsSidebar = ({groups}) => {
         <>
             <div className="mt-3 list-group">
             <Link to="/famjam" className={`list-group-item btn ${loc.pathname === '/famjam' || loc.pathname === '/famjam/editprofile'? 'active' : ''}`}>
-                <div className="wd-float-left" width="20%"><i className="fas fa-user me-3"></i><small> Profile </small></div>
+                <div className="wd-float-left" width="20%"><i className="fas fa-user me-3"></i><small className="wd-text"> Profile </small></div>
             </Link>
             {
                 groups.map && groups.map(group =>
@@ -32,12 +32,13 @@ const GroupsSidebar = ({groups}) => {
                         loc.pathname === '/famjam/GR'+group._id+'/todo' ||
                         loc.pathname === '/famjam/GR'+group._id+'/expense'
                         ? 'active' : ''}`}>
-                        <div className="wd-float-left" width="20%"><i className="fas fa-user-friends me-2"></i> <small>{group.groupName} </small></div>
+                        <div className="wd-float-left" width="20%"><i className="fas fa-user-friends me-2"></i>
+                        <small className="wd-text">{group.groupName} </small></div>
                     </Link>
                  )
             }
             <div className="list-group-item btn">
-            <i class="fa fa-sign-out" aria-hidden="true" onClick={() => signOut()}>
+            <i className="fa fa-sign-out" aria-hidden="true" onClick={() => signOut()}>
             </i></div>
             <Popup trigger={<div className="list-group-item btn wd-float-left" width="20%"><i className="fas fa-plus"></i></div>} modal contentStyle={contentStyle}>
                 <div className="bg-secondary border rounded border-light p-3" width="100px" height="100px">

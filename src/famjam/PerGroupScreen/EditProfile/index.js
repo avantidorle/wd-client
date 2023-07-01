@@ -7,17 +7,20 @@ import {findUserById} from "../../services/user-service";
 
 
 const Index = () => {
-    const [currentUser,setCurrentUser] =  useState({currentUser:""});
-    useEffect(()=>{findUserById(sessionStorage.getItem("currentUserId")).then(r1 => {
-        setCurrentUser(r1)
-    })},[]);
+    let [currentUser, setUser] = useState({currentUser: "newuser"});
+        useEffect( () => {
+                // console.log(sessionStorage.getItem("currentUserId"))
+                findUserById(sessionStorage.getItem("currentUserId")).then(r => {
+                    console.log("response is", r);
+                    setUser(r)
+                })}, [],
+        );
 
      const [firstName, setfirstName] = useState(currentUser.firstName);
      const [lastName, setlastName] = useState(currentUser.lastName);
      const [bio, setBio] = useState(currentUser.bio);
      const [location, setLocation] = useState(currentUser.location);
      const [birthday, setBirthday] = useState(currentUser.birthday);
-     console.log("birthday" + birthday);
      const getDate=(birthday)=>{
         return new Date(birthday).toLocaleDateString()
      }
@@ -36,7 +39,7 @@ const Index = () => {
 
                         <Link
                           className="btn btn-primary rounded-pill" id="save"
-                          to="/famjam" type="submit" block
+                          to="/famjam" type="submit"
                           onClick={() => updateUsers(dispatch, {...currentUser,
                           firstName: firstName,
                           lastName: lastName,
@@ -50,16 +53,8 @@ const Index = () => {
         </div>
         <br/>
         <div>
-        <img
-                            src={currentUser.bannerPicture}
-                            alt={currentUser.bannerPicture}
-                            className="wd-coverimg"
-                            alt="Cover Image"/>
-        <img
-                                    src={currentUser.bannerPicture}
-                                    alt={currentUser.bannerPicture}
-                                    className="wd-dpimg rounded-circle img-fluid"
-                                    alt="Profile Image"/>
+        <img src={currentUser.bannerPicture} className="wd-coverimg"/>
+        <img src={currentUser.profilePicture} className="wd-dpimg rounded-circle img-fluid"/>
         </div>
         <div className="wd-edit-details">
                         <ul className="list-group" id="edit-details">

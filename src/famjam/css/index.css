@@ -11,3 +11,13 @@
     color: #e6ebec;
     background-color: #a37b00;
 }
+
+@media screen and (max-width: 1200px) {
+      .wd-text {
+        display: none; }
+
+}
+
+.list-group {
+    width: auto;
+}

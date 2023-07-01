@@ -25,7 +25,7 @@ const PostsListItem = ({posts, gid}) => {
                     likes: posts.likes + 1}, gid)} className="far fa-thumbs-up ms-2 me-2 pt-2"></i>
                     {posts.likes}
 
-                    <i class="fa-solid fa-comment ms-3 me-1" onClick={() => setDisp("Show")}/>Comment</span>
+                    <i className="fa-solid fa-comment ms-3 me-1" onClick={() => setDisp("Show")}/>Comment</span>
                      <div className="temp">
                      {disp === "Hide" && <></>}
                      {disp === "Show" &&
